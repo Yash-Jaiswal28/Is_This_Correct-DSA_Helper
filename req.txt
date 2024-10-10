@@ -1,0 +1,10 @@
+langchain 
+langchain-core
+langchain-community 
+langchain-groq 
+langchain-experimental 
+neo4j 
+wikipedia 
+tiktoken 
+yfiles_jupyter_graphs
+     
