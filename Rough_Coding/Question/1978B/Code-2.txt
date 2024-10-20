@@ -1,0 +1,7 @@
+for _ in range(int(input())):
+    n,a,b=map(int,input().split())
+    if a>=b:
+        print(n*a)
+    else:
+        k=min(n,b-a)
+        print((b+b-k+1)*k//2+a*(n-k))

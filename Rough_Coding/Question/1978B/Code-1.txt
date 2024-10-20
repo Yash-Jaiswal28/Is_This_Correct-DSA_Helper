@@ -1,0 +1,4 @@
+def summ(n):return n*(n+1)//2
+for _ in range(int(input())):
+    n,a,b = map(int,input().split())
+    print(summ(b)-summ(b-n) if n-b+a<0 else summ(b)-summ(a)+(n-b+a)*a if b>=a else n*a)
