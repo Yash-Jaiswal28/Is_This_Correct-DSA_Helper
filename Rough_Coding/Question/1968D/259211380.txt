@@ -1,0 +1,28 @@
+import math
+t = int(input())
+for adsg in range(t):
+    n, k, b, s = map(int, input().split())
+    b -= 1
+    s -= 1
+    
+    p = list(map(int, input().split()))
+    a = list(map(int, input().split()))
+    ma1 = 0
+    ma2 = 0
+    now1 = 0
+    now2 = 0
+    
+    for i in range(min(n, k)):
+        ma1 = max(ma1, now1 + (k - i) * a[b])
+        ma2 = max(ma2, now2 + (k - i) * a[s])
+        now1 += a[b]
+        now2 += a[s]
+        
+        b = p[b] - 1
+        s = p[s] - 1
+    if ma1 > ma2:
+        print('Bodya')
+    elif ma1 < ma2:
+        print('Sasha')
+    else:
+        print('Draw')

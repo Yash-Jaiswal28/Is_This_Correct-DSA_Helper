@@ -1,0 +1,15 @@
+def solution():
+    n, k = list(map(int, input().split()))
+    if k%2 == 1 or k > n**2//2:
+        return "NO"
+    result = list(range(1, n+1))
+    left = 0
+    for right in reversed(range(n)):
+        if k >= (result[right]-result[left])*2:
+            k -= (result[right]-result[left])*2
+            result[left], result[right] = result[right], result[left]
+            left += 1
+    return f"YES\n{' '.join(map(str, result))}"
+
+for _ in range(int(input())):
+    print(solution())

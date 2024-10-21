@@ -1,0 +1,28 @@
+from sys import stdin, stdout
+
+m = int(stdin.readline())
+log = 30
+num_count = [0 for i in range(log)]
+ans = []
+
+for _ in range(m):
+    op, val = map(int, stdin.readline().split())
+    if op == 1:
+        num_count[val] += 1
+    else:
+        # somehow check if any subset adds up to val
+        nw = 0
+        for i in range(log):
+            r = (val%(2 << i)) // (1 << i)
+            if r > nw + num_count[i]:
+                ans.append(0)
+                break
+            val -= r
+            nw = (nw + num_count[i] - r) // 2
+        else:
+            ans.append(nw >= (val >> 30))
+
+stdout.write('\n'.join(["YES" if x else "NO" for x in ans]))
+            
+
+ 

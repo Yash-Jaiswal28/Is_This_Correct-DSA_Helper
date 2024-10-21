@@ -1,0 +1,38 @@
+def read(cast):
+    return map(cast, input().split())
+
+
+def solve(start, k, p, a):
+    used = set()
+    current = start - 1
+    ans = 0
+    sm = 0
+
+    while current not in used and k > 0:
+        ans = max(ans, sm + k * a[current])
+        used.add(current)
+        sm += a[current]
+        current = p[current] - 1
+        k -= 1
+    return ans
+
+
+def main():
+    n, k, pa, pb = read(int)
+    p = list(read(int))
+    a = list(read(int))
+    aa, ab = solve(pa, k, p, a), solve(pb, k, p, a)
+    if aa > ab:
+        print('Bodya')
+    elif aa < ab:
+        print('Sasha')
+    else:
+        print('Draw')
+
+
+if __name__ == "__main__":
+    # t, = 1,
+    t, = read(int)
+
+    for i in range(t):
+        main()

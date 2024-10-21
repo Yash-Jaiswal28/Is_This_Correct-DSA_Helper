@@ -1,0 +1,13 @@
+def solve():
+    n,k,PB,PS=map(int,input().split())
+    a=list(map(int,input().split()))
+    b=list(map(int,input().split()))
+    PS-=1
+    PB-=1
+    sumB=sumA=mxa=mxb=0
+    for i in range(min(n,k)):
+        mxb=max(mxb,(k-i)*b[PB]+sumB);sumB+=b[PB];PB=a[PB]-1
+        mxa=max(mxa,(k-i)*b[PS]+sumA);sumA+=b[PS];PS=a[PS]-1
+    print("Draw" if mxb==mxa else "Sasha" if mxa>mxb else "Bodya")
+for _ in range(int(input())):
+    solve()

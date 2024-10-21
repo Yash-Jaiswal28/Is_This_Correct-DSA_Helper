@@ -1,0 +1,27 @@
+# Initialize an array to keep track of the count of each power of 2
+a = [0] * 30
+
+# Read all input lines except the first one (which contains the number of queries)
+for s in [*open(0)][1:]:
+    # Parse the query type and value
+    t, x = map(int, s.split())
+    
+    # If the query is ADD x
+    if t < 2:
+        # Increment the count of 2^x
+        a[x] += 1
+    else:
+        # If the query is GET w
+        r = c = 0  # Initialize result and carry
+        # Process each power of 2
+        for u in a:
+            # Right shift carry to handle the next bit
+            c >>= 1
+            # Add the count of current power of 2 to carry
+            c += u - x % 2
+            # Update result if carry is non-negative
+            r |= c
+            # Right shift x to process the next bit
+            x >>= 1
+        # Output YES if r is non-negative, otherwise NO
+        print('YNEOS'[r < 0::2])

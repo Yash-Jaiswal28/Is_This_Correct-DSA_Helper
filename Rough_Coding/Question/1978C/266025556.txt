@@ -1,0 +1,22 @@
+for _ in range(int(input())):
+    n, k = map(int, input().split())
+    k1 = k
+    
+    p = [0] * n
+    l, r = 1, n
+    while l <= r:
+        d = (r - l) * 2
+        if d > k:
+            p[l - 1] = l
+            l += 1
+        else:
+            k -= d
+            p[l - 1] = r
+            p[r - 1] = l
+            l += 1
+            r -= 1
+    if k == 0:
+        print("Yes")
+        print(*p)
+    else:
+        print("No")

@@ -1,0 +1,30 @@
+def solve():
+    n, k = map(int, input().split())
+    ans = list(range(1, n + 1))
+    l, r = 0 , n - 1
+    a = (n - 1) << 1
+    
+    while k > a:
+        if not (l < r):
+            print("NO")
+            return
+        k -= a
+        ans[l], ans[r] = ans[r], ans[l]
+        a -= 4
+        r -= 1
+        l += 1
+    
+    i = l
+    while k > 0 and i < r:
+        k -= 2
+        l += 1
+    if k != 0:
+            print("NO")
+    else:
+        ans[i], ans[l] = ans[l], ans[i]
+        print("YES")
+        print(*ans)
+
+
+for _ in range(int(input())):
+    solve()

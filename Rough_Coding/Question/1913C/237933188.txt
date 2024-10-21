@@ -1,0 +1,13 @@
+fpow = [0] * 30
+n = int(input())
+ans = []
+for _ in range(n):
+    a, b = map(int, input().split())
+    if a == 1:
+        fpow[b] += 1
+    else:
+        for i in range(29, -1, -1):
+            c = min(b >> i, fpow[i])
+            b -= c << i
+        ans.append("YES" if b == 0 else "NO")
+print(*ans, sep='\n')

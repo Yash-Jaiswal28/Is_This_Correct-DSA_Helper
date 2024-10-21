@@ -1,0 +1,9 @@
+for _ in range(int(input())):
+    n,a,b=map(int,input().split())
+    mn=min(n,b)
+    k=0 if(b-a+1)<0 else b-a+1
+    # print(k,mn)
+    k=min(mn,k)
+    kp=((b+b-k+1)*k//2)
+    ap=(n-k)*a
+    print(kp+ap)

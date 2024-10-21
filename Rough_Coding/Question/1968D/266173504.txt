@@ -1,0 +1,31 @@
+def get_mx(start_pos, count_moves):
+
+    ans = 0
+    now = 0
+    was = set()
+    for moves_left in range(count_moves, 0, -1):
+        if start_pos in was:
+            break
+        was.add(start_pos)
+        ans = max(ans, now + a[start_pos - 1] * moves_left)
+        now += a[start_pos - 1]
+        start_pos = p[start_pos - 1]
+
+    return ans
+
+
+for _ in range(int(input())):
+    n, k, p_b, p_s = map(int, input().split())
+    p = list(map(int, input().split()))
+    a = list(map(int, input().split()))
+
+    bodya = get_mx(p_b, k)
+    sasha = get_mx(p_s, k)
+    # print(sasha)
+
+    if bodya > sasha:
+        print('Bodya')
+    elif bodya < sasha:
+        print('Sasha')
+    else:
+        print('Draw')

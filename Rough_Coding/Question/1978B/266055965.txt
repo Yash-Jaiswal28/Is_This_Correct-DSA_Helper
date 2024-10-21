@@ -1,0 +1,10 @@
+t=int(input())
+while(t>0):
+    t-=1 
+    n,a,b=map(int,input().split())
+    if(a>=b):
+        print(a*n)
+    else:
+        k=b-a
+        k=min(k,n)
+        print(k*(b+1)+(n-k)*a-(k*(k+1))//2)

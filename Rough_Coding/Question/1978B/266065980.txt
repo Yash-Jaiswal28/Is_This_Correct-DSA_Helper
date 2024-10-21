@@ -1,0 +1,9 @@
+m = int(input())
+for i in range(m):
+    k = input().split()
+    n,a,b = int(k[0]),int(k[1]),int(k[2])    
+    if a >= b:
+        print(n*a)
+    else:
+        i = min((b-a),n)
+        print((n-i)*a+(b+1)*i-i*(i+1)//2)

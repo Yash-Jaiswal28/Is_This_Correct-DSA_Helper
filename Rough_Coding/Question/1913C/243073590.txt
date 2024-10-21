@@ -1,0 +1,20 @@
+count = [0] * 32
+
+
+def solve(value):
+    rem = 0
+    for i in range(32):
+        rem += count[i] - (value%2)
+        if rem < 0:
+            return False
+        rem //= 2
+        value //= 2
+
+    return True
+
+for _ in range(int(input())):
+    opcode, value = map(int, input().split())
+    if opcode==1:
+        count[value] += 1
+    else:
+        print('YES' if solve(value) else 'NO')
